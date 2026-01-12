@@ -12,7 +12,7 @@ import joblib
 # ---------------------------------------
 # CONFIG
 # ---------------------------------------
-DATA_PATH = "nbpdcl1_data.csv"
+DATA_PATH = os.path.join("data", "nbpdcl1_data.csv")
 MODEL_PATH = "load_prediction_model.pkl"
 SCALER_PATH = "load_model.pkl"
 
@@ -28,6 +28,7 @@ if not os.path.exists(DATA_PATH):
     raise FileNotFoundError(f"CSV not found: {DATA_PATH}")
 
 df = pd.read_csv(DATA_PATH)
+
 
 df["ts"] = pd.to_datetime(df["ts"], format="mixed", errors="coerce")
 df = df.dropna(subset=["ts"])
